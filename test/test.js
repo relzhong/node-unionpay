@@ -17,14 +17,15 @@ const sdk = new UnionPay({
   frontUrl: 'http://www.rest.org',
   backUrl: 'http://www.rest.org',
   sandbox: true,
+  openLog: true,
 });
 
 
-// sdk.microPay({
-//   orderId: 'W165416234562',
-//   qrNo: '6226042917422567302',
-//   txnAmt: '1',
-// }).then(res => console.log(res));
+sdk.microPay({
+  orderId: 'W165416123121',
+  qrNo: '6222674044229453590',
+  txnAmt: '1',
+}).then(res => console.log(res));
 
 // sdk.revoke({
 //   orderId: 'W165416234563',
@@ -44,11 +45,11 @@ const sdk = new UnionPay({
 //   // txnTime: '20180812051852',
 // }).then(res => console.log(res));
 
-sdk.downloadBill({
-  settleDate: '0119',
-  fileType: '00',
-}).then(res => {
-  console.log(res);
-  const zlib = require('zlib');
-  fs.writeFileSync(res.fileName, zlib.inflateSync(new Buffer(res.fileContent, 'base64')));
-});
+// sdk.downloadBill({
+//   settleDate: '0119',
+//   fileType: '00',
+// }).then(res => {
+//   console.log(res);
+//   const zlib = require('zlib');
+//   fs.writeFileSync(res.fileName, zlib.inflateSync(new Buffer(res.fileContent, 'base64')));
+// });
