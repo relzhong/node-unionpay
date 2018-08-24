@@ -156,8 +156,10 @@ class Unionpay {
     };
     req = Object.assign(req, option);
     const reqdata = this.buildParams(req);
+    this.logger.info('[unipay]', 'refund req:', JSON.stringify(req));
     const res = await axios.post(this.backTransUrl, querystring.stringify(reqdata));
     const result = this.parseResult(res.data);
+    this.logger.info('[unipay]', 'refund res:', JSON.stringify(result));
     if (!this.verify(result)) throw new Error('Verify Fail');
     return result;
   }
